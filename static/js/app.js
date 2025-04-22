@@ -7,10 +7,23 @@ function renderPost(post) {
     document.getElementById("feed").appendChild(template);
 }
 
-function submitPost() {
-    const message = document.getElementById("postInput").value;
-    console.log("Would post:", message);
-    alert("Tweet submitted (not really yet)");
+async function submitPost() {
+    const mesage = document.getElementById("postInput")
+    try{
+        const response = await fetch("/api/add_post",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                message: mesage.value
+            }),
+
+        })
+    }catch (error) {
+        console.error("🦅🦅Error submitting post🦅🦅:", error);
+    }
 }
 
 window.onload = async () => {
