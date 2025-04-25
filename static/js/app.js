@@ -16,6 +16,10 @@ function renderPost(post, isNew = false) {
 
 async function submitPost() {
     const message = document.getElementById("postInput").value;
+    if (message == "") {
+        console.log("message not submitted text is empty")
+    }
+    else{
   try {
     const response = await fetch("/api/add_post", {
       method: "POST",
@@ -29,6 +33,7 @@ async function submitPost() {
   } catch (error) {
     console.error("Error submitting post:", error);
   }
+}
 }
 
 window.onload = async () => {
