@@ -48,3 +48,4 @@ window.onload = async () => {
       console.error("Error fetching posts:", error);
     }
   };
+  
